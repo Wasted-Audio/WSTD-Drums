@@ -12,7 +12,7 @@ DMXModule::DMXModule( ) {
 
   numModules = 2;
 
-  setupSamples();
+  setupSamples( );
 }
 
 uint8_t DMXModule::sampleId(uint8_t which) {
@@ -21,15 +21,15 @@ uint8_t DMXModule::sampleId(uint8_t which) {
     return 0;
   }
 
-  return (uint8_t) sample;
+  return (uint8_t)sample;
 }
 
-void DMXModule::setupSamples() {
+void DMXModule::setupSamples( ) {
   numSamples = 12;
-  char name[32];
+  char name[ 32 ];
 
   for (uint8_t i = 0; i < numSamples; i++) {
-    sprintf(name, "DMX-%02d", i + 1);
-    samples[i] = sampleManager->selectSample(name);
+    sprintf(name, "dmx-%02d", i + 1);
+    samples[ i ] = sampleManager->selectSample(name);
   }
 }
