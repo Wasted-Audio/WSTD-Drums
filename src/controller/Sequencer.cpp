@@ -56,8 +56,6 @@ SequencerModule::SequencerModule() {
     }
   }
 
-  doReset();
-
   configParam<PercentTen>(PULSE_WIDTH, 0.1, 10.0, 5.05, "Width", "%");
   configParam<Blank>(PLAY, 0.0f, 1.0f, 0.0f, "Run");
   configParam<Blank>(CYCLE, 0.0f, 1.0f, 0.0f, "Cycle");
@@ -65,6 +63,9 @@ SequencerModule::SequencerModule() {
   configParam<Blank>(MAIN_DOWN, 0.0f, 1.0f, 0.0f, "Down");
   configParam<Blank>(COPY, 0.0f, 1.0f, 0.0f, "Copy");
   configParam<Blank>(PASTE, 0.0f, 1.0f, 0.0f, "Paste");
+
+  currentPlay = 1;
+  doReset();
 }
 
 SequencerModule::~SequencerModule() {
