@@ -1,85 +1,53 @@
 #pragma once
-/*
-Shadow code taken and modified from https://github.com/lindenbergresearch/LRTRack
 
-and is available under the following license:
-
-Copyright (c) 2017-2018, Lindenberg Research / Patrick Lindenberg
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-* Commercial redistribution of the code, or parts, in any form
-  must be granted by the author.
-
-* Redistributions of source code must retain the above copyright notice, this
-  list of conditions and the following disclaimer.
-
-* Redistributions in binary form must reproduce the above copyright notice,
-  this list of conditions and the following disclaimer in the documentation
-  and/or other materials provided with the distribution.
-
-* Neither the name of Lindenberg Research nor the names of its
-  contributors may be used to endorse or promote products derived from
-  this software without specific prior written permission.
-
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-*/
+/* there used to be shadow class here, initially added in
+ * https://github.com/CardinalModules/DrumKit/commit/0d20223f84753e46d28990a63b89cd14406ea32f
+ *
+ * due to incompatible license it was removed and recreated from scratch
+ */
 
 struct DKShadow {
-private:
-  Rect box;
-  float size = 0.65;
-  float strength = 0.8f;
+  static constexpr const float kMargin = 40.f;
+  static constexpr const float kRadius = 12.f;
 
-  Vec shadowPos = Vec(3, 5);
+  Rect _box = { 0.f, 0.f };
+  Vec _pos = { 0.f, 0.f };
+  float _size = 0.65f;
+  float _strength = 1.f;
 
 public:
-  void setShadowPosition(float x, float y) {
-    shadowPos = Vec(x, y);
+  void setBox(const Rect& box) {
+    _box = box;
   }
 
-  void setBox(const Rect &box) {
-    DKShadow::box = box;
+  void setShadowPosition(float x, float y) {
+    _pos = Vec(x, y);
   }
 
   void setSize(float size) {
-    DKShadow::size = size;
+    _size = size;
   }
 
   void setStrength(float strength) {
-    DKShadow::strength = strength;
+    _strength = strength;
   }
 
-  void drawShadow(NVGcontext *vg, float strength, float size) {
-    // add shadow
+  void draw(NVGcontext* vg) {
+    const NVGcolor col = settings::preferDarkPanels
+                       ? nvgRGBAf(0.3f, 0.3f, 0.3f, _strength)
+                       : nvgRGBAf(0.f, 0.f, 0.f, _strength);
+
     nvgBeginPath(vg);
-    nvgRect(vg, -20, -20, box.size.x + 40, box.size.y + 40);
-
-    NVGcolor icol = nvgRGBAf(0.0f, 0.0f, 0.0f, strength);
-    NVGcolor ocol = nvgRGBAf(0.0f, 0.0f, 0.0f, 0.f);
-    ;
-
-    NVGpaint paint = nvgRadialGradient(
-        vg, box.size.x / 2 + shadowPos.x, box.size.y / 2 + shadowPos.y,
-        box.size.x * 0.3f, box.size.x * size, icol, ocol);
-    nvgFillPaint(vg, paint);
+    nvgRect(vg, -kMargin/2, -kMargin/2, _box.size.x + kMargin, _box.size.y + kMargin);
+    nvgFillPaint(vg, nvgBoxGradient(vg,
+                                    _box.size.x / 3 + _pos.x,
+                                    _box.size.y / 3 + _pos.y,
+                                    _box.size.x * _size,
+                                    _box.size.y * _size,
+                                    kRadius,
+                                    kRadius,
+                                    col,
+                                    nvgRGBAf(0.f, 0.f, 0.f, 0.f)));
     nvgFill(vg);
-  }
-
-  void draw(NVGcontext *vg) {
-    drawShadow(vg, strength, size);
   };
 };
