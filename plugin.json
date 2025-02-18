@@ -1,15 +1,12 @@
 {
-  "slug": "DrumKit",
-  "name": "DrumKit",
-  "version": "2.0.1",
+  "slug": "WSTD-Drums",
+  "name": "WSTD-Drums",
+  "version": "2.0.0",
   "license": "CC0-1.0",
-  "author": "SV Modular",
-  "authorEmail": "contact@svmodular.com",
-  "authorUrl": "https://svmodular.com/",
-  "pluginUrl": "https://svmodular.com/plugin/vcv/drumkit.html",
-  "manualUrl": "https://svmodular.com/plugin/vcv/drumkit.html",
-  "sourceUrl": "https://github.com/SVModular/DrumKit",
-  "brand": "SV Modular",
+  "author": "Wasted Audio",
+  "authorUrl": "https://wasted.audio",
+  "sourceUrl": "https://github.com/Wasted-Audio/WSTD-Drums",
+  "brand": "Wasted Audio",
   "modules": [
     {
       "slug": "BassDrum9",
