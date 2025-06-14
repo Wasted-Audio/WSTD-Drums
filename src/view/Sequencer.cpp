@@ -76,31 +76,31 @@ SequencerWidget::SequencerWidget(SequencerModule *module) {
                                  SequencerModule::RESET));
 
   // run
-  addParam(createParam<DKLEDBezel>(Vec(69, 33), module,
+  addParam(createParam<DKLEDBezel>(Vec(69, 31), module,
                                          SequencerModule::PLAY));
   addChild(createLight<DKButtonLight<GreenLight>>(
-      Vec(71, 35), module, SequencerModule::RUN_LIGHT));
+      Vec(71, 33), module, SequencerModule::RUN_LIGHT));
   addInput(createInput<DKPort>(Vec(45, 30), module,
                                    SequencerModule::RUN_CV));
 
   // cycle
-  addParam(createParam<DKLEDBezel>(Vec(69, 78), module,
+  addParam(createParam<DKLEDBezel>(Vec(69, 76), module,
                                          SequencerModule::CYCLE));
   addChild(createLight<DKButtonLight<GreenLight>>(
-      Vec(71, 80), module, SequencerModule::CYCLE_LIGHT));
+      Vec(71, 78), module, SequencerModule::CYCLE_LIGHT));
   addInput(createInput<DKPort>(Vec(45, 75), module,
                                    SequencerModule::CYCLE_CV));
   // copy
-  addParam(createParam<DKLEDBezel>(Vec(450.5, 33), module,
+  addParam(createParam<DKLEDBezel>(Vec(450.5, 31), module,
                                          SequencerModule::COPY));
   addChild(createLight<DKButtonLight<GreenLight>>(
-      Vec(452.5, 35), module, SequencerModule::COPY_LIGHT));
+      Vec(452.5, 33), module, SequencerModule::COPY_LIGHT));
 
   // paste
-  addParam(createParam<DKLEDBezel>(Vec(450.5, 78), module,
+  addParam(createParam<DKLEDBezel>(Vec(450.5, 76), module,
                                          SequencerModule::PASTE));
   addChild(createLight<DKButtonLight<GreenLight>>(
-      Vec(452.5, 80), module, SequencerModule::PASTE_LIGHT));
+      Vec(452.5, 78), module, SequencerModule::PASTE_LIGHT));
 
 
   for (int i = 0; i < SEQ_PLAY; i++) {

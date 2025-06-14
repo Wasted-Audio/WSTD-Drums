@@ -38,14 +38,14 @@ SBDWidget::SBDWidget(SBDModule *module) {
       Vec(100, 177.5), module, SBDModule::CLICK_PARAM));
 
   addParam(createParam<CKSSThree>(
-      Vec(22, 231.5), module, SBDModule::SUBOCT_PARAM));
+      Vec(18, 231.5), module, SBDModule::SUBOCT_PARAM));
 
   addParam(createParam<CKSS>(
-      Vec(89.5, 236.5), module, SBDModule::WAVE_PARAM));
+      Vec(85, 236.5), module, SBDModule::WAVE_PARAM));
 
   addInput(createInput<DKPort>(Vec(22, 302.5), module,
                                    SBDModule::GATE_INPUT));
-  addOutput(createOutput<DKPort>(Vec(88, 302.5), module,
+  addOutput(createOutput<DKPort>(Vec(87, 302.5), module,
                                    SBDModule::AUDIO_OUTPUT));
 
 }

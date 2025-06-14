@@ -38,11 +38,11 @@ GnomeWidget::GnomeWidget(GnomeModule *module) {
 
   addParam(createParam<DKSwitch>(Vec(83, 39), module, GnomeModule::SWING));
 
-  addParam(createParam<DKLEDBezel>(Vec(28, 33), module,
+  addParam(createParam<DKLEDBezel>(Vec(28, 31), module,
                                          GnomeModule::RUN));
   addChild(createLight<DKButtonLight<GreenLight>>(
-      Vec(30, 35), module, GnomeModule::RUN_LIGHT));
-  addInput(createInput<DKPort>(Vec(4, 33), module,
+      Vec(30, 33), module, GnomeModule::RUN_LIGHT));
+  addInput(createInput<DKPort>(Vec(4, 30), module,
                                    GnomeModule::RUN_CV));
 
   addParam(createParam<LightKnobFull>(
