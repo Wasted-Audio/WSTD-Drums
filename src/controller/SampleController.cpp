@@ -25,7 +25,7 @@ float SampleController::paramValue (uint16_t param, uint16_t input, float low, f
   return clamp(current, low, high);
 }
 
-DrumKit::Sample *SampleController::getSample(uint8_t current) {
+WSTD_Drums::Sample *SampleController::getSample(uint8_t current) {
   if (numSamples == 0) {
     return nullptr;
   }

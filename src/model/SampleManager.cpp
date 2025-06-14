@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-namespace DrumKit {
+namespace WSTD_Drums {
 
   SampleManager* m_instanceSingleton = nullptr;
 

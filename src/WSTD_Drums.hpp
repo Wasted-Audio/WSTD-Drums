@@ -21,4 +21,4 @@ extern Model *modelMarionette;
 extern Model *modelTomi;
 extern Model *modelBaronial;
 
-extern DrumKit::SampleManager *sampleManager;
+extern WSTD_Drums::SampleManager *sampleManager;

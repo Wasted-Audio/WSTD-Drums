@@ -1,12 +1,12 @@
 #include <cstdint>
 
-#include "../DrumKit.hpp"
+#include "../WSTD_Drums.hpp"
 #include "../../deps/SynthDevKit/src/CV.hpp"
 #include "../../deps/LFO.hpp"
 #include "../model/Envelope.hpp"
 #include "../model/SampleManager.hpp"
 
-using namespace DrumKit;
+using namespace WSTD_Drums;
 
 struct MarionetteModule : Module {
   enum ParamIds {

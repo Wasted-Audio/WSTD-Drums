@@ -2,7 +2,7 @@
 
 #include <cstdint>
 #include "../../deps/SynthDevKit/src/CV.hpp"
-#include "../DrumKit.hpp"
+#include "../WSTD_Drums.hpp"
 #include "../model/SampleManager.hpp"
 
 // the maximum number of drums to support in a single module
@@ -20,14 +20,14 @@ struct SampleController : Module {
   void process(const ProcessArgs &) override;
   float paramValue (uint16_t, uint16_t, float, float);
   virtual void setupSamples( );
-  DrumKit::Sample *getSample(uint8_t);
+  WSTD_Drums::Sample *getSample(uint8_t);
   virtual uint8_t sampleId(uint8_t);
   virtual float getTune(uint8_t);
 
   SynthDevKit::CV *cv[MAX_MODULES];
-  DrumKit::SampleManagerContext ctx[MAX_MODULES];
+  WSTD_Drums::SampleManagerContext ctx[MAX_MODULES];
 
-  DrumKit::Sample *samples[MAX_SAMPLES];
+  WSTD_Drums::Sample *samples[MAX_SAMPLES];
   uint8_t numSamples;
 
   uint8_t numModules;

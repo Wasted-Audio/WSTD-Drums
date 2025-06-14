@@ -6,7 +6,7 @@
 
 #define MAX_SAMPLE_NAME 64
 
-namespace DrumKit {
+namespace WSTD_Drums {
 
 struct Sample {
   Sample(uint64_t _length, std::string _name, float *_values, float _pitch,
@@ -47,4 +47,4 @@ private:
   SampleManager( );
 };
 
-}; // namespace DrumKit
+}; // namespace WSTD_Drums

@@ -1,12 +1,12 @@
 #include <cstdio>
 
-#include "DrumKit.hpp"
+#include "WSTD_Drums.hpp"
 
 // The plugin-wide instance of the Plugin class
 Plugin *pluginInstance;
 
 // sample manager instance
-DrumKit::SampleManager *sampleManager = nullptr;
+WSTD_Drums::SampleManager *sampleManager = nullptr;
 
 float *loadSample (std::string which, size_t *size) {
   FILE *in = fopen(asset::plugin(pluginInstance, which).c_str(), "rb");
@@ -42,18 +42,18 @@ float *loadSample (std::string which, size_t *size) {
 }
 
 void setupSamples ( ) {
-  DrumKit::SampleManager *sm = {0};
+  WSTD_Drums::SampleManager *sm = {0};
   sampleManager = sm->getInstance();
 
   // kick is 55hz
   // Sample (uint64_t _length, string _name, float *_values, float _pitch) : length(_length), name(_name), values(_values), pitch(_pitch) { }
   size_t size;
   float *arr = loadSample("res/samples/kick/01.raw", &size);
-  DrumKit::Sample *kick = new DrumKit::Sample((uint64_t) size, "kick01", arr, 55);
+  WSTD_Drums::Sample *kick = new WSTD_Drums::Sample((uint64_t) size, "kick01", arr, 55);
   sampleManager->addSample(kick);
 
   arr = loadSample("res/samples/kick/02.raw", &size);
-  kick = new DrumKit::Sample((uint64_t) size, "kick02", arr, 60);
+  kick = new WSTD_Drums::Sample((uint64_t) size, "kick02", arr, 60);
   sampleManager->addSample(kick);
 
 
@@ -62,7 +62,7 @@ void setupSamples ( ) {
     char buf[64];
     sprintf(buf, "%02d", i);
     arr = loadSample(std::string("res/samples/bd9/") + buf + ".raw", &size);
-    DrumKit::Sample *bd9 = new DrumKit::Sample((uint64_t) size, std::string("bd9-") + buf, arr, 0);
+    WSTD_Drums::Sample *bd9 = new WSTD_Drums::Sample((uint64_t) size, std::string("bd9-") + buf, arr, 0);
     sampleManager->addSample(bd9);
   }
 
@@ -71,7 +71,7 @@ void setupSamples ( ) {
     char buf[64];
     sprintf(buf, "%02d", i);
     arr = loadSample(std::string("res/samples/snare/") + buf + ".raw", &size);
-    DrumKit::Sample *snare = new DrumKit::Sample((uint64_t) size, std::string("snare-") + buf, arr, 0);
+    WSTD_Drums::Sample *snare = new WSTD_Drums::Sample((uint64_t) size, std::string("snare-") + buf, arr, 0);
     sampleManager->addSample(snare);
   }
 
@@ -80,7 +80,7 @@ void setupSamples ( ) {
     char buf[64];
     sprintf(buf, "%02d", i);
     arr = loadSample(std::string("res/samples/closedhh/") + buf + ".raw", &size);
-    DrumKit::Sample *hh = new DrumKit::Sample((uint64_t) size, std::string("closedhh-") + buf, arr, 0);
+    WSTD_Drums::Sample *hh = new WSTD_Drums::Sample((uint64_t) size, std::string("closedhh-") + buf, arr, 0);
     sampleManager->addSample(hh);
   }
 
@@ -89,7 +89,7 @@ void setupSamples ( ) {
     char buf[64];
     sprintf(buf, "%02d", i);
     arr = loadSample(std::string("res/samples/openhh/") + buf + ".raw", &size);
-    DrumKit::Sample *hh = new DrumKit::Sample((uint64_t) size, std::string("openhh-") + buf, arr, 0);
+    WSTD_Drums::Sample *hh = new WSTD_Drums::Sample((uint64_t) size, std::string("openhh-") + buf, arr, 0);
     sampleManager->addSample(hh);
   }
 
@@ -98,7 +98,7 @@ void setupSamples ( ) {
     char buf[64];
     sprintf(buf, "%02d", i);
     arr = loadSample(std::string("res/samples/cr78/") + buf + ".raw", &size);
-    DrumKit::Sample *hh = new DrumKit::Sample((uint64_t) size, std::string("cr78-") + buf, arr, 0);
+    WSTD_Drums::Sample *hh = new WSTD_Drums::Sample((uint64_t) size, std::string("cr78-") + buf, arr, 0);
     sampleManager->addSample(hh);
   }
 
@@ -107,7 +107,7 @@ void setupSamples ( ) {
     char buf[64];
     sprintf(buf, "%02d", i);
     arr = loadSample(std::string("res/samples/dmx/") + buf + ".raw", &size);
-    DrumKit::Sample *hh = new DrumKit::Sample((uint64_t) size, std::string("dmx-") + buf, arr, 0);
+    WSTD_Drums::Sample *hh = new WSTD_Drums::Sample((uint64_t) size, std::string("dmx-") + buf, arr, 0);
     sampleManager->addSample(hh);
   }
 
@@ -116,7 +116,7 @@ void setupSamples ( ) {
     char buf[64];
     sprintf(buf, "%02d", i);
     arr = loadSample(std::string("res/samples/tomi/") + buf + ".raw", &size);
-    DrumKit::Sample *hh = new DrumKit::Sample((uint64_t) size, std::string("tomi-") + buf, arr, 0);
+    WSTD_Drums::Sample *hh = new WSTD_Drums::Sample((uint64_t) size, std::string("tomi-") + buf, arr, 0);
     sampleManager->addSample(hh);
   }
 
